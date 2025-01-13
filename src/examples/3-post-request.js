@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
+
 const url = 'https://course-api.com/axios-tutorial-post';
 
 const PostRequest = () => {
@@ -9,6 +10,14 @@ const PostRequest = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(name, email);
+
+    const data = {name, email}
+    try {
+      const resp = await axios.post(url, data)  
+      console.log(resp)
+    } catch (error) {
+      console.log(error.response)
+    }
   };
 
   return (
